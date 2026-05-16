@@ -1,0 +1,14 @@
+<Solution>
+  <Folder Name="/01_Introduction_To_WebAPI/" />
+  <Folder Name="/01_Introduction_To_WebAPI/Project/">
+    <Project Path="01_Introduction_To_WebAPI/Project/SwiggyAPI.API/SwiggyAPI.API.csproj" />
+  </Folder>
+  <Folder Name="/02_HTTP_Basics/" />
+  <Folder Name="/02_HTTP_Basics/Project/">
+    <Project Path="02_HTTP_Basics/Project/SwiggyAPI.HttpBasics.API/SwiggyAPI.HttpBasics.API.csproj" />
+  </Folder>
+  <Folder Name="/03_Project_Structure_And_Files_Controllers/" />
+  <Folder Name="/03_Project_Structure_And_Files_Controllers/Project/">
+    <Project Path="03_Project_Structure_And_Files_Controllers/Project/SwiggyAPI.Controllers.API/SwiggyAPI.Controllers.API.csproj" />
+  </Folder>
+</Solution>

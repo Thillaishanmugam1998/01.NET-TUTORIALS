@@ -1,0 +1,45 @@
+@SwiggyAPI.Controllers.API_HostAddress = http://localhost:5089
+
+GET {{SwiggyAPI.Controllers.API_HostAddress}}/api/restaurants
+Accept: application/json
+
+###
+
+GET {{SwiggyAPI.Controllers.API_HostAddress}}/api/restaurants/2
+Accept: application/json
+
+###
+
+GET {{SwiggyAPI.Controllers.API_HostAddress}}/api/restaurants/open
+Accept: application/json
+
+###
+
+POST {{SwiggyAPI.Controllers.API_HostAddress}}/api/restaurants
+Content-Type: application/json
+
+{
+  "name": "Dindigul Meals Corner",
+  "city": "Coimbatore",
+  "cuisine": "South Indian",
+  "rating": 4.4,
+  "isOpen": true
+}
+
+###
+
+PUT {{SwiggyAPI.Controllers.API_HostAddress}}/api/restaurants/2
+Content-Type: application/json
+
+{
+  "name": "Burger Street Express",
+  "city": "Bengaluru",
+  "cuisine": "Fast Food",
+  "rating": 4.3,
+  "isOpen": false
+}
+
+###
+
+DELETE {{SwiggyAPI.Controllers.API_HostAddress}}/api/restaurants/3
+Accept: application/json
