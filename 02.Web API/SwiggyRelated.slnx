@@ -2,4 +2,7 @@
   <Folder Name="/01_Routing/">
     <Project Path="01_Routing/SwiggyRelated.API/SwiggyRelated.API.csproj" />
   </Folder>
+  <Folder Name="/02_RouteParametersAndQueryStringsInRouting/">
+    <Project Path="02_RouteParametersAndQueryStringsInRouting/SwiggyRelated.API/SwiggyRelated.API.csproj" />
+  </Folder>
 </Solution>
