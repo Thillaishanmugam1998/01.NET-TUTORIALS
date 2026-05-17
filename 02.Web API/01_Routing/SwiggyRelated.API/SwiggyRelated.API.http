@@ -1,0 +1,37 @@
+@SwiggyRelated.API_HostAddress = http://localhost:5050
+
+### Get all orders
+GET {{SwiggyRelated.API_HostAddress}}/api/orders
+
+### Get order by id
+GET {{SwiggyRelated.API_HostAddress}}/api/orders/1
+
+### Get orders by customer name
+GET {{SwiggyRelated.API_HostAddress}}/api/orders/customer/Asha
+
+### Get orders by status
+GET {{SwiggyRelated.API_HostAddress}}/api/orders/status/Preparing
+
+### Search orders by area
+GET {{SwiggyRelated.API_HostAddress}}/api/orders/search?area=RS%20Puram
+
+### Track order by id
+GET {{SwiggyRelated.API_HostAddress}}/api/orders/1/track
+
+### Create a new order
+POST {{SwiggyRelated.API_HostAddress}}/api/orders
+Content-Type: application/json
+
+{
+  "customerName": "Karthik",
+  "restaurantName": "Pizza Plaza",
+  "deliveryArea": "Peelamedu",
+  "status": "Placed",
+  "totalAmount": 410
+}
+
+### Update order status
+PUT {{SwiggyRelated.API_HostAddress}}/api/orders/1/status/Delivered
+
+### Delete an order
+DELETE {{SwiggyRelated.API_HostAddress}}/api/orders/3

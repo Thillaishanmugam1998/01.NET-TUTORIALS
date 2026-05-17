@@ -1,60 +1,55 @@
-# Exercises - Project Structure and Files - Controllers
+# Exercises - Default ASP.NET Core Web API Files and Folders
 
 ## Exercise 1
 
-Open `RestaurantsController.cs` and identify:
+Open the project and identify the purpose of these files:
 
-- base route
-- `GET` action
-- `POST` action
-- custom route action
+- `Program.cs`
+- `appsettings.json`
+- `appsettings.Development.json`
+- `launchSettings.json`
+- `SwiggyAPI.Controllers.API.csproj`
+
+Write one simple line for each file.
 
 ## Exercise 2
 
-Call:
+Open `RestaurantsController.cs` and answer:
 
-```http
-GET /api/restaurants/open
-```
-
-Write down:
-
-- which action method is called
-- which service method is called
-- what status code is returned
+1. Which route is used for all restaurant endpoints?
+2. Which action handles `GET /api/restaurants`?
+3. Which action handles `GET /api/restaurants/open`?
 
 ## Exercise 3
 
-Create one new controller action:
+Open `IRestaurantService.cs` and `RestaurantService.cs`.
 
-```http
-GET /api/restaurants/city/chennai
-```
+Write down:
 
-Goal:
-
-- read city from route
-- filter matching restaurants
-- return the result
+- which methods are declared in interface
+- which methods are implemented in service
+- why both files are needed
 
 ## Exercise 4
 
-Explain in simple words:
+Run this request from `.http` file:
 
-1. Why do we use `ControllerBase`?
-2. Why do we use `[Route]`?
-3. Why do we use `[HttpGet]`?
-4. Why should controller not directly contain all logic?
+```http
+GET /api/restaurants/2
+```
+
+Then explain the full request flow from:
+
+- `.http` file
+- controller
+- service
+- response
 
 ## Exercise 5
 
-Debug the application and place breakpoints in:
+Explain in simple words:
 
-- `RestaurantsController`
-- `RestaurantService`
-
-Observe the call flow for:
-
-```http
-GET /api/restaurants/1
-```
+1. Why should controllers be inside `Controllers` folder?
+2. Why should models be in `Models` folder?
+3. Why should business logic not be written directly inside controller?
+4. Why is standard structure important in real-time projects?

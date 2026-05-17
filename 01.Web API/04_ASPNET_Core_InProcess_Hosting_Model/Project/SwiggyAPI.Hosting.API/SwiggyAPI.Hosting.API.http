@@ -1,0 +1,27 @@
+@SwiggyAPI.Hosting.API_HostAddress = http://localhost:5090
+
+GET {{SwiggyAPI.Hosting.API_HostAddress}}/api/restaurants
+Accept: application/json
+
+###
+
+GET {{SwiggyAPI.Hosting.API_HostAddress}}/api/restaurants/open
+Accept: application/json
+
+###
+
+GET {{SwiggyAPI.Hosting.API_HostAddress}}/api/hosting/current
+Accept: application/json
+
+###
+
+POST {{SwiggyAPI.Hosting.API_HostAddress}}/api/restaurants
+Content-Type: application/json
+
+{
+  "name": "Saravana Tiffin Hub",
+  "city": "Chennai",
+  "cuisine": "South Indian",
+  "rating": 4.6,
+  "isOpen": true
+}

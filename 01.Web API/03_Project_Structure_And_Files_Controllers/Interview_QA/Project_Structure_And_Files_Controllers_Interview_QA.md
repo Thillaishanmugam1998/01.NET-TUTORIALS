@@ -1,127 +1,191 @@
-# Project Structure and Files - Controllers - Interview Q&A
+# Default ASP.NET Core Web API Files and Folders - Interview Q&A
 
 ## Beginner Questions
 
-### 1. What is a controller in ASP.NET Core Web API?
+### 1. What is the purpose of `Program.cs` in ASP.NET Core Web API?
 
-A controller is a class that handles incoming HTTP requests and sends back HTTP responses.
+`Program.cs` is the startup file of the application.
+
+It is used to:
+
+- register services
+- configure middleware
+- map controllers
+- run the application
 
 Real-time usage:
-Frontend apps, mobile apps, and admin panels call controller endpoints to get or save data.
+Every ASP.NET Core Web API project starts from this file.
 
 Common mistake:
-Thinking controller is the place for all business logic. It should mainly handle request and response flow.
+Thinking `Program.cs` only starts the app. It also configures the app.
 
 ### 2. What is the purpose of the `Controllers` folder?
 
-It organizes all API endpoint classes in one place.
+The `Controllers` folder stores API endpoint classes.
 
 Real-time usage:
-Large projects usually have many controllers like `OrdersController`, `UsersController`, and `PaymentsController`.
+This is where incoming URLs like `/api/restaurants` are handled.
 
 Common mistake:
-Keeping controller files in random folders and making project navigation confusing.
+Writing controller code in random folders and making the project hard to navigate.
 
-### 3. Why do controllers inherit from `ControllerBase`?
+### 3. What is the use of the `Models` folder?
 
-`ControllerBase` provides useful methods such as `Ok()`, `NotFound()`, `BadRequest()`, and `CreatedAtAction()`.
+The `Models` folder stores C# classes that represent request and response data.
+
+Real-time usage:
+These classes define the shape of data used between client and API.
 
 Common mistake:
-Using plain classes and then missing helpful API methods.
+Using one giant model for every operation.
+
+### 4. What is `appsettings.json` used for?
+
+It stores application configuration.
+
+Examples:
+
+- logging settings
+- connection strings later
+- API-related settings
+
+Common mistake:
+Confusing configuration file with code file.
 
 ## Intermediate Questions
 
-### 4. What does `[ApiController]` do?
+### 5. Why do we use an `Interfaces` folder?
 
-It marks the class as an API controller and enables API-friendly features.
+We use interfaces to define contracts between controller and service.
 
 Real-time usage:
-It is standard in modern ASP.NET Core Web API projects.
+This supports loose coupling and better maintainability.
 
 Common mistake:
-Forgetting the attribute and then wondering why API behavior feels inconsistent.
+Skipping interfaces in service-based applications and tightly coupling code.
 
-### 5. What does `[Route("api/[controller]")]` mean?
+### 6. Why do we use an `Implementations` folder?
 
-It creates the route using the controller name.
-
-For `RestaurantsController`, the route becomes:
-
-```text
-api/restaurants
-```
-
-Common mistake:
-Not understanding that `[controller]` automatically uses the controller class name without the word `Controller`.
-
-### 6. What is an action method?
-
-An action method is a public method inside a controller that handles a request.
+It stores the actual class that implements an interface.
 
 Example:
 
-- `GetRestaurants()`
-- `AddRestaurant()`
+- `IRestaurantService`
+- `RestaurantService`
+
+Real-time usage:
+This separation makes projects easier to test and extend.
+
+### 7. What is the purpose of `launchSettings.json`?
+
+It stores local run profiles for development.
+
+It can define:
+
+- port numbers
+- environment name
+- launch behavior
+
+Common mistake:
+Thinking this file is production deployment configuration.
+
+### 8. What is the use of the `.http` file?
+
+It is used to test API endpoints quickly from the IDE.
+
+Real-time usage:
+Developers often use it during local API testing.
+
+Common mistake:
+Thinking `.http` file is required for the application to run.
 
 ## Advanced Questions
 
-### 7. Why should controller logic be thin?
+### 9. Why do we move DI registration into `ServiceCollectionExtensions.cs`?
 
-Thin controllers are easier to test, maintain, and read.
+Because it keeps `Program.cs` clean and organized.
 
 Real-time usage:
-In enterprise projects, business rules are usually kept in services, not controllers.
+As the number of services grows, extension methods help structure registrations better.
 
 Common mistake:
-Writing validation, SQL logic, and complex rules directly in controller methods.
+Writing too many registrations directly in `Program.cs` and making it cluttered.
 
-### 8. Why do we use `ActionResult<T>`?
+### 10. Why is standard folder structure important in enterprise projects?
 
-Because it allows the action to return both data and HTTP status responses.
+Because it improves:
 
-Example:
-
-- `Ok(data)`
-- `NotFound()`
-
-### 9. What is route constraint in `{restaurantId:int}`?
-
-It means the route value must be an integer.
+- maintainability
+- onboarding
+- readability
+- teamwork
 
 Real-time usage:
-This helps routing become clearer and avoids wrong matches.
+Large teams depend on predictable project structure.
+
+### 11. Why should controllers stay thin?
+
+Controllers should focus on:
+
+- receiving requests
+- routing
+- calling services
+- returning responses
+
+Real-time usage:
+Business logic is easier to maintain when it is inside services.
+
+Common mistake:
+Writing validation, SQL logic, and complex calculations inside controllers.
 
 ## Real-Time Scenario Questions
 
-### 10. The API is running but `/api/restaurants` returns 404. What will you check?
+### 12. A request is returning 404. Which files should you check first?
 
 Check:
 
-- controller route attribute
-- `app.MapControllers()`
-- controller class name
-- HTTP method
-- correct base URL and port
-
-### 11. Why do we use a separate service after controller?
-
-Because controllers should handle communication, and services should handle business logic.
+- `Program.cs`
+- controller route attributes
+- `launchSettings.json`
+- `.http` request URL
 
 Real-time usage:
-This separation makes the project scalable when the system grows.
+These are the first places developers check during endpoint debugging.
 
-### 12. Why was `/api/restaurants/open` added as a custom route?
+### 13. A service is not being injected into controller. What might be wrong?
 
-It demonstrates how controllers can expose both standard and custom route patterns.
+Possible issue:
+
+- service was not registered in DI
+
+Check:
+
+- `ServiceCollectionExtensions.cs`
+- `Program.cs`
 
 Common mistake:
-Creating unclear routes that do not describe the purpose of the action.
+Creating the service class but forgetting registration.
+
+### 14. When should database-related folders be added?
+
+Only when the project reaches the database learning stage.
+
+In this learning path:
+
+- start with static data
+- understand API flow first
+- add database later step-by-step
+
+This is a better beginner-friendly approach.
 
 ## Quick Revision Points
 
-- controller receives request
-- action method handles endpoint
-- route attribute maps URL
-- HTTP verb attribute maps request type
-- controller should stay thin
-- service should contain logic
+- `Program.cs` configures and starts the app
+- `Controllers` handle endpoints
+- `Models` store data classes
+- `Interfaces` define contracts
+- `Implementations` contain logic
+- `Services` can hold DI registration helpers
+- `appsettings.json` stores config
+- `launchSettings.json` helps local development
+- `.http` file helps endpoint testing

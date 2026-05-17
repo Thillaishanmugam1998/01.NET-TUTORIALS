@@ -12,6 +12,7 @@ D:\01.THILLAI\02.GIT REPO\01.NET-TUTORIALS\01.Web API\03_Project_Structure_And_F
 D:\01.THILLAI\02.GIT REPO\01.NET-TUTORIALS\01.Web API\03_Project_Structure_And_Files_Controllers\Project\SwiggyAPI.Controllers.API\obj\Debug\net8.0\SwiggyAPI.Controllers.API.AssemblyInfo.cs
 D:\01.THILLAI\02.GIT REPO\01.NET-TUTORIALS\01.Web API\03_Project_Structure_And_Files_Controllers\Project\SwiggyAPI.Controllers.API\obj\Debug\net8.0\SwiggyAPI.Controllers.API.csproj.CoreCompileInputs.cache
 D:\01.THILLAI\02.GIT REPO\01.NET-TUTORIALS\01.Web API\03_Project_Structure_And_Files_Controllers\Project\SwiggyAPI.Controllers.API\obj\Debug\net8.0\SwiggyAPI.Controllers.API.MvcApplicationPartsAssemblyInfo.cache
+D:\01.THILLAI\02.GIT REPO\01.NET-TUTORIALS\01.Web API\03_Project_Structure_And_Files_Controllers\Project\SwiggyAPI.Controllers.API\obj\Debug\net8.0\SwiggyAPI.Controllers.API.sourcelink.json
 D:\01.THILLAI\02.GIT REPO\01.NET-TUTORIALS\01.Web API\03_Project_Structure_And_Files_Controllers\Project\SwiggyAPI.Controllers.API\obj\Debug\net8.0\rjimswa.dswa.cache.json
 D:\01.THILLAI\02.GIT REPO\01.NET-TUTORIALS\01.Web API\03_Project_Structure_And_Files_Controllers\Project\SwiggyAPI.Controllers.API\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
 D:\01.THILLAI\02.GIT REPO\01.NET-TUTORIALS\01.Web API\03_Project_Structure_And_Files_Controllers\Project\SwiggyAPI.Controllers.API\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
@@ -26,4 +27,3 @@ D:\01.THILLAI\02.GIT REPO\01.NET-TUTORIALS\01.Web API\03_Project_Structure_And_F
 D:\01.THILLAI\02.GIT REPO\01.NET-TUTORIALS\01.Web API\03_Project_Structure_And_Files_Controllers\Project\SwiggyAPI.Controllers.API\obj\Debug\net8.0\SwiggyAPI.Controllers.API.pdb
 D:\01.THILLAI\02.GIT REPO\01.NET-TUTORIALS\01.Web API\03_Project_Structure_And_Files_Controllers\Project\SwiggyAPI.Controllers.API\obj\Debug\net8.0\SwiggyAPI.Controllers.API.genruntimeconfig.cache
 D:\01.THILLAI\02.GIT REPO\01.NET-TUTORIALS\01.Web API\03_Project_Structure_And_Files_Controllers\Project\SwiggyAPI.Controllers.API\obj\Debug\net8.0\ref\SwiggyAPI.Controllers.API.dll
-D:\01.THILLAI\02.GIT REPO\01.NET-TUTORIALS\01.Web API\03_Project_Structure_And_Files_Controllers\Project\SwiggyAPI.Controllers.API\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

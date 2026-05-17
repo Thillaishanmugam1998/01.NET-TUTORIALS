@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SwiggyAPI.HttpBasics.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+871cf8573fcfce501915128e2d7c35d24573d977")]
 [assembly: System.Reflection.AssemblyProductAttribute("SwiggyAPI.HttpBasics.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SwiggyAPI.HttpBasics.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

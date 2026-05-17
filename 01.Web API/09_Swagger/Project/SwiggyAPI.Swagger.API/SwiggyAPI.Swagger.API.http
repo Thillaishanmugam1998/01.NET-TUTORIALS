@@ -1,0 +1,27 @@
+@SwiggyAPI.Swagger.API_HostAddress = http://localhost:5094
+
+GET {{SwiggyAPI.Swagger.API_HostAddress}}/api/restaurants
+Accept: application/json
+
+###
+
+GET {{SwiggyAPI.Swagger.API_HostAddress}}/api/serviceLifetime/compare
+Accept: application/json
+
+###
+
+GET {{SwiggyAPI.Swagger.API_HostAddress}}/api/serviceLifetime/compare
+Accept: application/json
+
+###
+
+POST {{SwiggyAPI.Swagger.API_HostAddress}}/api/restaurants
+Content-Type: application/json
+
+{
+  "name": "Tandoori Hub",
+  "city": "Bengaluru",
+  "cuisine": "North Indian",
+  "rating": 4.1,
+  "isOpen": true
+}

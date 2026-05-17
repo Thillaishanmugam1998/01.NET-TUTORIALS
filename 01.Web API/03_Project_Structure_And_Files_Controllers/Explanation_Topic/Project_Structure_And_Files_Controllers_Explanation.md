@@ -1,80 +1,105 @@
-# Project Structure and Files - Controllers
+# Default ASP.NET Core Web API Files and Folders
 
 ## 1. Topic Overview
 
-A controller is the entry point of a Web API request.
+When we create an ASP.NET Core Web API project, Visual Studio or the `dotnet` CLI gives us a default set of files and folders.
 
-In simple words:
+These files are not random.
 
-- client sends request
-- controller receives request
-- controller calls service
-- controller returns response
+Each file has a clear job.
 
-In our `SwiggyAPI` project, the `Controllers` folder contains classes that expose API endpoints like:
+In our `SwiggyAPI` learning path, understanding these files is very important because this is the base on which we will build:
 
-- `GET /api/restaurants`
-- `GET /api/restaurants/1`
-- `POST /api/restaurants`
+- restaurant management
+- food items
+- cart
+- orders
+- authentication
+- middleware
+- database integration later
 
-So if someone asks, "Which file talks directly to the client request?" the answer is: the controller.
+Simple idea:
+
+- some files configure the app
+- some files define API endpoints
+- some files store models
+- some files register services
+- some files help us run and test the API
+
+If you understand these default files clearly, the rest of Web API becomes much easier.
 
 ## 2. Why It Is Used
 
-We use controllers because they:
+We use the default ASP.NET Core Web API structure because it gives us:
 
-- receive HTTP requests
-- match URL routes
-- read route values and request body
-- call business logic
-- return status codes and JSON response
+- a clean starting point
+- standard project organization
+- controller support
+- environment-based configuration
+- easy local testing
+- scalability for future enterprise features
 
-Without controllers, our API does not know how to respond to incoming URLs.
+Real benefit:
+
+When a new developer joins a team, they can quickly understand the project if files are kept in the standard structure.
 
 ## 3. Real-Time Example
 
-Think about Swiggy mobile app.
+Imagine a real Swiggy-like backend.
 
-When user opens restaurant list, frontend sends:
+When frontend calls:
 
 ```http
 GET /api/restaurants
 ```
 
-When admin wants only open restaurants:
+The request touches multiple files:
 
-```http
-GET /api/restaurants/open
-```
+1. `Program.cs` starts and configures the app
+2. `RestaurantsController.cs` receives the request
+3. `IRestaurantService.cs` defines what logic is needed
+4. `RestaurantService.cs` returns data
+5. `Restaurant.cs` defines response shape
+6. `appsettings.json` can provide settings used by the app
 
-When admin adds a new restaurant:
+So one API call is not handled by just one file.
 
-```http
-POST /api/restaurants
-```
-
-The controller handles each of these requests and connects them to the service layer.
+It is handled by a small group of files working together.
 
 ## 4. Architecture Flow
 
+We are continuing the same simple architecture:
+
 ```text
-Client / Postman / Mobile App
-          |
-          v
-RestaurantsController
-          |
-          v
-IRestaurantService
-          |
-          v
-RestaurantService
-          |
-          v
-Static Restaurant List
-          |
-          v
+Client
+  |
+  v
+Program.cs
+  |
+  v
+Controller
+  |
+  v
+IService
+  |
+  v
+Service Implementation
+  |
+  v
+Model
+  |
+  v
 JSON Response
 ```
+
+For this lesson:
+
+- `Program.cs` configures the application
+- `Controllers` folder receives requests
+- `Interfaces` folder defines contracts
+- `Implementations` folder contains logic
+- `Models` folder stores data classes
+- `Properties/launchSettings.json` helps local run setup
 
 ## 5. Folder Structure
 
@@ -111,242 +136,361 @@ JSON Response
 
 ## 6. Step-by-Step Implementation
 
-### Step 1: Create `Controllers` folder
+### Step 1: Understand `Program.cs`
 
-This folder stores all API controllers.
+`Program.cs` is the starting point of the application.
 
-Right now we created:
+Its main jobs are:
 
-- `RestaurantsController.cs`
+- create the application builder
+- register services
+- build the app
+- configure middleware
+- map controllers
+- run the application
 
-Later in the same solution we can continue with:
-
-- `FoodItemsController.cs`
-- `OrdersController.cs`
-- `CartController.cs`
-
-### Step 2: Create controller class
-
-We created:
+Important lines:
 
 ```csharp
-public class RestaurantsController : ControllerBase
-```
-
-`ControllerBase` gives ready-made helper methods like:
-
-- `Ok()`
-- `NotFound()`
-- `CreatedAtAction()`
-
-### Step 3: Add controller attributes
-
-We used:
-
-```csharp
-[ApiController]
-[Route("api/[controller]")]
+builder.Services.AddControllers();
+builder.Services.AddApplicationServices();
+app.MapControllers();
 ```
 
 Meaning:
 
-- `[ApiController]` tells ASP.NET Core this class is an API controller
-- `[Route("api/[controller]")]` creates route based on controller name
+- enable controller support
+- register our custom services
+- expose controller endpoints
 
-So `RestaurantsController` becomes:
+### Step 2: Understand `Controllers` folder
 
-```text
-api/restaurants
-```
+The `Controllers` folder contains endpoint classes.
 
-### Step 4: Inject service into controller
+In our project:
 
-Controller should not contain all business logic.
+- `RestaurantsController.cs`
 
-So we inject:
+This file directly handles URLs like:
 
-```csharp
-IRestaurantService
-```
+- `GET /api/restaurants`
+- `GET /api/restaurants/2`
+- `GET /api/restaurants/open`
+- `POST /api/restaurants`
 
-This keeps code clean and easy to maintain.
+### Step 3: Understand `Models` folder
 
-### Step 5: Add action methods
+The `Models` folder contains simple C# classes used to send or receive data.
 
-We added:
+We currently have:
 
-- `GetRestaurants()`
-- `GetRestaurantById(int restaurantId)`
-- `GetOpenRestaurants()`
-- `AddRestaurant(RestaurantCreateRequest request)`
-- `UpdateRestaurant(int restaurantId, RestaurantUpdateRequest request)`
-- `DeleteRestaurant(int restaurantId)`
+- `Restaurant.cs`
+- `RestaurantCreateRequest.cs`
+- `RestaurantUpdateRequest.cs`
 
-Each action is connected to an HTTP method using attributes.
+Why separate request models?
 
-## 7. Full Code
+Because create/update input may be different from output model in real projects.
 
-Main learning file:
+This is a clean enterprise habit.
 
-- `Controllers/RestaurantsController.cs`
+### Step 4: Understand `Interfaces` folder
 
-Supporting files:
-
-- `Interfaces/IRestaurantService.cs`
-- `Implementations/RestaurantService.cs`
-- `Program.cs`
-
-These files work together to complete the request flow.
-
-## 8. Code Explanation
-
-### `[ApiController]`
-
-Marks the class as Web API controller.
-
-### `[Route("api/[controller]")]`
-
-Creates route using controller name.
-
-For `RestaurantsController`, route becomes:
-
-```text
-api/restaurants
-```
-
-### `[HttpGet]`
-
-Matches `GET /api/restaurants`
-
-### `[HttpGet("{restaurantId:int}")]`
-
-Matches:
-
-```text
-GET /api/restaurants/1
-```
-
-`int` means route value must be integer.
-
-### `[HttpGet("open")]`
-
-Matches:
-
-```text
-GET /api/restaurants/open
-```
-
-This is a custom route segment.
-
-### `ActionResult<T>`
-
-This lets controller return:
-
-- data
-- status code
-- error response
+The `Interfaces` folder stores contracts.
 
 Example:
 
-- `Ok(restaurants)`
-- `NotFound("message")`
+```csharp
+public interface IRestaurantService
+```
+
+This tells us what the service can do, such as:
+
+- get all restaurants
+- get restaurant by id
+- get open restaurants
+- add restaurant
+- update restaurant
+- delete restaurant
+
+### Step 5: Understand `Implementations` folder
+
+The `Implementations` folder stores actual logic classes.
+
+In our lesson:
+
+- `RestaurantService.cs`
+
+This class uses a static list for now.
+
+That is correct for beginner learning because we are not adding database complexity yet.
+
+### Step 6: Understand `Services` folder
+
+The `Services` folder contains helper classes related to service registration.
+
+We added:
+
+- `ServiceCollectionExtensions.cs`
+
+Why?
+
+Because it keeps `Program.cs` clean.
+
+Instead of writing many registrations in `Program.cs`, we move them into one extension method:
+
+```csharp
+builder.Services.AddApplicationServices();
+```
+
+### Step 7: Understand `appsettings.json`
+
+This file stores application configuration.
+
+Examples in real projects:
+
+- logging levels
+- connection strings
+- API keys
+- feature flags
+
+In our current lesson, it mainly contains logging settings.
+
+### Step 8: Understand `appsettings.Development.json`
+
+This file stores settings specific to the Development environment.
+
+Real-time usage:
+
+- developers may use different logging
+- local machine settings may differ from production
+
+### Step 9: Understand `launchSettings.json`
+
+This file helps run the API locally in Visual Studio or with local profiles.
+
+It defines:
+
+- HTTP URL
+- HTTPS URL
+- environment name
+
+This is mainly for developer convenience.
+
+### Step 10: Understand `.http` file
+
+`SwiggyAPI.Controllers.API.http` helps test API endpoints quickly.
+
+You can call:
+
+- `GET`
+- `POST`
+- `PUT`
+- `DELETE`
+
+without opening Postman.
+
+This is very useful during learning and development.
+
+### Step 11: Understand `.csproj`
+
+`SwiggyAPI.Controllers.API.csproj` is the project file.
+
+It tells .NET:
+
+- this is a Web SDK project
+- target framework is `.NET 8`
+- nullable is enabled
+- implicit usings are enabled
+
+This file is very important in enterprise projects because package references and build settings live here.
+
+## 7. Full Code
+
+Main project files for this topic:
+
+- `Program.cs`
+- `Controllers/RestaurantsController.cs`
+- `Interfaces/IRestaurantService.cs`
+- `Implementations/RestaurantService.cs`
+- `Models/Restaurant.cs`
+- `Models/RestaurantCreateRequest.cs`
+- `Models/RestaurantUpdateRequest.cs`
+- `Services/ServiceCollectionExtensions.cs`
+- `appsettings.json`
+- `appsettings.Development.json`
+- `Properties/launchSettings.json`
+- `SwiggyAPI.Controllers.API.http`
+- `SwiggyAPI.Controllers.API.csproj`
+
+## 8. Code Explanation
+
+### `Program.cs`
+
+This is the entry point.
+
+Important lines:
+
+- `builder.Services.AddControllers();`
+  This enables controller-based Web API support.
+
+- `builder.Services.AddApplicationServices();`
+  This registers our custom service classes into Dependency Injection.
+
+- `app.UseHttpsRedirection();`
+  This redirects HTTP traffic to HTTPS.
+
+- `app.MapControllers();`
+  This exposes controller routes to the outside world.
+
+### `RestaurantsController.cs`
+
+This file receives HTTP requests.
+
+Important attributes:
+
+- `[ApiController]`
+- `[Route("api/[controller]")]`
+- `[HttpGet]`
+- `[HttpPost]`
+- `[HttpPut]`
+- `[HttpDelete]`
+
+This file should stay thin.
+
+Meaning:
+
+- receive request
+- call service
+- return response
+
+### `RestaurantService.cs`
+
+This file contains business logic for now.
+
+Example:
+
+- return all restaurants
+- filter open restaurants
+- add one restaurant
+- update one restaurant
+- delete one restaurant
+
+### `ServiceCollectionExtensions.cs`
+
+This is used for Dependency Injection registration.
+
+Example:
+
+```csharp
+services.AddScoped<IRestaurantService, RestaurantService>();
+```
+
+Meaning:
+
+When controller asks for `IRestaurantService`, give `RestaurantService`.
 
 ## 9. Request Lifecycle
 
-### Example: `GET /api/restaurants/open`
+Example request:
 
-1. Client sends request to `/api/restaurants/open`
-2. ASP.NET Core checks all controller routes
-3. It finds `RestaurantsController`
-4. It finds `[HttpGet("open")]`
-5. That action calls `_restaurantService.GetOpenRestaurants()`
-6. Service filters the static list
-7. Controller returns `200 OK`
-8. Client receives JSON array
+```http
+GET /api/restaurants/open
+```
 
-### Example: `POST /api/restaurants`
+Full flow:
 
-1. Client sends POST request with JSON body
-2. ASP.NET Core converts JSON into `RestaurantCreateRequest`
-3. Controller receives request model
-4. Controller calls service
-5. Service creates restaurant object
-6. Controller returns `201 Created`
+1. Browser, Postman, or `.http` file sends request
+2. ASP.NET Core app is already started by `Program.cs`
+3. `app.MapControllers()` makes controller routes available
+4. Routing checks `RestaurantsController`
+5. `[HttpGet("open")]` matches the URL
+6. Controller calls `_restaurantService.GetOpenRestaurants()`
+7. `RestaurantService` filters static list using LINQ
+8. Controller returns `200 OK`
+9. Client receives JSON array
+
+This is the same request flow used in real companies, even when database and authentication are added later.
 
 ## 10. Interview Questions
 
 ### Beginner
 
-What is a controller in ASP.NET Core Web API?
+What is `Program.cs` in ASP.NET Core Web API?
 
-Controller is the class that receives HTTP requests and returns HTTP responses.
+It is the application startup file where we configure services and the request pipeline.
 
 ### Intermediate
 
-What is the purpose of `[ApiController]`?
+Why do we keep models in a separate folder?
 
-It marks the class as an API controller and enables API-friendly behavior.
+Because models represent data clearly and keep the project organized and easy to maintain.
 
 ### Advanced
 
-Why should business logic not be written directly inside controller?
+Why is `ServiceCollectionExtensions.cs` useful?
 
-Because controller should stay thin and focus only on request handling, routing, and response creation.
+It keeps service registration clean, reusable, and scalable as the project grows.
 
 ### Real-time scenario
 
-If route `/api/restaurants/open` is not hitting the action, what should you check?
+A new developer joins the team and cannot find where `/api/restaurants` is handled. Which files should they check first?
 
-Check:
+They should check:
 
-- route attribute
-- HTTP method
-- controller naming
-- `app.MapControllers()`
-- whether app is running on expected URL
+- `Program.cs`
+- `Controllers/RestaurantsController.cs`
+- `Interfaces/IRestaurantService.cs`
+- `Implementations/RestaurantService.cs`
 
 ## 11. Exercises
 
-1. Run `GET /api/restaurants` and identify which controller action is executed.
-2. Run `GET /api/restaurants/open` and explain why it does not call `GetRestaurantById`.
-3. Add one more custom route named `closed`.
-4. Change one action return type and observe compiler suggestions.
-5. Explain the difference between route value and request body.
+1. Open `Program.cs` and explain each line in your own words.
+2. Open `launchSettings.json` and identify the HTTP and HTTPS ports.
+3. Open `SwiggyAPI.Controllers.API.http` and run `GET /api/restaurants`.
+4. Trace the request flow from controller to service.
+5. Explain why `RestaurantCreateRequest` and `RestaurantUpdateRequest` are separate files.
 
 ## 12. Common Errors
 
+- forgetting `builder.Services.AddControllers()`
 - forgetting `app.MapControllers()`
-- forgetting `[HttpGet]` or `[HttpPost]`
-- writing wrong route template
-- placing business logic directly inside controller
-- returning raw strings everywhere instead of proper status codes
-- forgetting to inject the service
+- placing models inside controller file
+- writing business logic directly inside controller
+- not registering service in DI
+- confusing `appsettings.json` with `launchSettings.json`
+- thinking `.http` file is required for production
 
 ## 13. Debugging Tips
 
-- put breakpoint inside controller action
-- confirm request URL is correct
-- verify HTTP method in Postman or `.http` file
-- check whether route template matches URL
-- see whether dependency injection resolved the service
-- if action is not hit, first inspect `Program.cs`
+- if endpoint returns `404`, check route attribute and `app.MapControllers()`
+- if service is null, check DI registration
+- if app is not starting, check `Program.cs` and `.csproj`
+- if wrong port is used, check `launchSettings.json`
+- if request body is not binding, check request model and JSON shape
 
 ## 14. Best Practices
 
-- keep controller small and readable
-- keep business logic in service class
-- use meaningful action names
-- use proper HTTP verb attributes
-- return proper status codes
-- use route constraints like `{restaurantId:int}` when needed
-- do not mix database code inside controller
+- keep `Program.cs` simple and readable
+- keep controllers thin
+- keep business logic in services
+- keep models in separate files
+- use interfaces for loose coupling
+- use environment files correctly
+- use `.http` file for fast testing during development
+- do not add unnecessary layers until needed
 
 ## 15. Summary Notes
 
-- controller is the entry gate of API request
-- `Controllers` folder stores API endpoint classes
-- attributes map URL and HTTP methods
-- controller calls service
-- service performs logic
-- controller sends final response
-- thin controller is a real-time industry standard
+- default ASP.NET Core Web API files each have a clear purpose
+- `Program.cs` starts and configures the app
+- `Controllers` handle requests
+- `Models` define data shape
+- `Interfaces` define contracts
+- `Implementations` contain business logic
+- `Services` can organize DI registration
+- `appsettings.json` stores config
+- `launchSettings.json` helps local run setup
+- `.http` file helps test endpoints quickly
+
+This lesson is the foundation for all coming lessons in the same `SwiggyAPI` solution.

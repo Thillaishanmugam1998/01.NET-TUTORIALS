@@ -11,4 +11,28 @@
   <Folder Name="/03_Project_Structure_And_Files_Controllers/Project/">
     <Project Path="03_Project_Structure_And_Files_Controllers/Project/SwiggyAPI.Controllers.API/SwiggyAPI.Controllers.API.csproj" />
   </Folder>
+  <Folder Name="/04_ASPNET_Core_InProcess_Hosting_Model/" />
+  <Folder Name="/04_ASPNET_Core_InProcess_Hosting_Model/Project/">
+    <Project Path="04_ASPNET_Core_InProcess_Hosting_Model/Project/SwiggyAPI.Hosting.API/SwiggyAPI.Hosting.API.csproj" />
+  </Folder>
+  <Folder Name="/05_ASPNET_Core_OutOfProcess_Hosting_Model/" />
+  <Folder Name="/05_ASPNET_Core_OutOfProcess_Hosting_Model/Project/">
+    <Project Path="05_ASPNET_Core_OutOfProcess_Hosting_Model/Project/SwiggyAPI.OutOfProcessHosting.API/SwiggyAPI.OutOfProcessHosting.API.csproj" />
+  </Folder>
+  <Folder Name="/06_ASPNET_Core_Kestrel_Web_Server/" />
+  <Folder Name="/06_ASPNET_Core_Kestrel_Web_Server/Project/">
+    <Project Path="06_ASPNET_Core_Kestrel_Web_Server/Project/SwiggyAPI.Kestrel.API/SwiggyAPI.Kestrel.API.csproj" />
+  </Folder>
+  <Folder Name="/07_Dependency_Injection/" />
+  <Folder Name="/07_Dependency_Injection/Project/">
+    <Project Path="07_Dependency_Injection/Project/SwiggyAPI.DependencyInjection.API/SwiggyAPI.DependencyInjection.API.csproj" />
+  </Folder>
+  <Folder Name="/08_Singleton_Scoped_Transient/" />
+  <Folder Name="/08_Singleton_Scoped_Transient/Project/">
+    <Project Path="08_Singleton_Scoped_Transient/Project/SwiggyAPI.ServiceLifetimes.API/SwiggyAPI.ServiceLifetimes.API.csproj" />
+  </Folder>
+  <Folder Name="/09_Swagger/" />
+  <Folder Name="/09_Swagger/Project/">
+    <Project Path="09_Swagger/Project/SwiggyAPI.Swagger.API/SwiggyAPI.Swagger.API.csproj" />
+  </Folder>
 </Solution>

@@ -1,0 +1,5 @@
+<Solution>
+  <Folder Name="/01_Routing/">
+    <Project Path="01_Routing/SwiggyRelated.API/SwiggyRelated.API.csproj" />
+  </Folder>
+</Solution>

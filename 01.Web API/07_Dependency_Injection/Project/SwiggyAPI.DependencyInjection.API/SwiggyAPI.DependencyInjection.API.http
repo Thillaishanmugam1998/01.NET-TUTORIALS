@@ -1,0 +1,32 @@
+@SwiggyAPI.DependencyInjection.API_HostAddress = http://localhost:5093
+
+GET {{SwiggyAPI.DependencyInjection.API_HostAddress}}/api/restaurants
+Accept: application/json
+
+###
+
+GET {{SwiggyAPI.DependencyInjection.API_HostAddress}}/api/restaurants/open
+Accept: application/json
+
+###
+
+GET {{SwiggyAPI.DependencyInjection.API_HostAddress}}/api/restaurants/message
+Accept: application/json
+
+###
+
+GET {{SwiggyAPI.DependencyInjection.API_HostAddress}}/api/dependency/current
+Accept: application/json
+
+###
+
+POST {{SwiggyAPI.DependencyInjection.API_HostAddress}}/api/restaurants
+Content-Type: application/json
+
+{
+  "name": "Madras Dosa Corner",
+  "city": "Chennai",
+  "cuisine": "South Indian",
+  "rating": 4.3,
+  "isOpen": true
+}

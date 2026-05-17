@@ -1,0 +1,27 @@
+@SwiggyAPI.OutOfProcessHosting.API_HostAddress = http://localhost:5091
+
+GET {{SwiggyAPI.OutOfProcessHosting.API_HostAddress}}/api/restaurants
+Accept: application/json
+
+###
+
+GET {{SwiggyAPI.OutOfProcessHosting.API_HostAddress}}/api/restaurants/open
+Accept: application/json
+
+###
+
+GET {{SwiggyAPI.OutOfProcessHosting.API_HostAddress}}/api/hosting/current
+Accept: application/json
+
+###
+
+POST {{SwiggyAPI.OutOfProcessHosting.API_HostAddress}}/api/restaurants
+Content-Type: application/json
+
+{
+  "name": "Andhra Spice Box",
+  "city": "Hyderabad",
+  "cuisine": "Andhra",
+  "rating": 4.5,
+  "isOpen": true
+}
