@@ -1,0 +1,55 @@
+@SwiggyRelated.API_HostAddress = http://localhost:5027
+
+### Get all orders
+GET {{SwiggyRelated.API_HostAddress}}/api/orders
+
+### Get order by id
+GET {{SwiggyRelated.API_HostAddress}}/api/orders/1
+
+### Get the same order by using an alternate URL
+GET {{SwiggyRelated.API_HostAddress}}/api/orders/details/1
+
+### Get the same order by using another alternate URL
+GET {{SwiggyRelated.API_HostAddress}}/api/orders/order-details/1
+
+### Get orders by customer name
+GET {{SwiggyRelated.API_HostAddress}}/api/orders/customer/Asha
+
+### Get orders by status
+GET {{SwiggyRelated.API_HostAddress}}/api/orders/status/Preparing
+
+### Get orders by customer and status using route parameters
+GET {{SwiggyRelated.API_HostAddress}}/api/orders/customer/Asha/status/Placed
+
+### Search orders by area
+GET {{SwiggyRelated.API_HostAddress}}/api/orders/search?area=RS%20Puram
+
+### Advanced search using multiple query string values
+GET {{SwiggyRelated.API_HostAddress}}/api/orders/advanced-search?restaurantName=Annapoorna&deliveryArea=Gandhipuram&status=Placed&minAmount=200&maxAmount=300
+
+### Get paged orders using query string values
+GET {{SwiggyRelated.API_HostAddress}}/api/orders/paged?pageNumber=1&pageSize=2
+
+### Track order by id
+GET {{SwiggyRelated.API_HostAddress}}/api/orders/1/track
+
+### Track the same order by using an alternate URL
+GET {{SwiggyRelated.API_HostAddress}}/api/orders/track-order/1
+
+### Create a new order
+POST {{SwiggyRelated.API_HostAddress}}/api/orders
+Content-Type: application/json
+
+{
+  "customerName": "Karthik",
+  "restaurantName": "Pizza Plaza",
+  "deliveryArea": "Peelamedu",
+  "status": "Placed",
+  "totalAmount": 410
+}
+
+### Update order status
+PUT {{SwiggyRelated.API_HostAddress}}/api/orders/1/status/Delivered
+
+### Delete an order
+DELETE {{SwiggyRelated.API_HostAddress}}/api/orders/3

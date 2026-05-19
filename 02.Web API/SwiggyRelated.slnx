@@ -5,4 +5,7 @@
   <Folder Name="/02_RouteParametersAndQueryStringsInRouting/">
     <Project Path="02_RouteParametersAndQueryStringsInRouting/SwiggyRelated.API/SwiggyRelated.API.csproj" />
   </Folder>
+  <Folder Name="/03_MultipleUrlsForASingleResourceInAspNetCoreWebApi/">
+    <Project Path="03_MultipleUrlsForASingleResourceInAspNetCoreWebApi/SwiggyRelated.API/SwiggyRelated.API.csproj" />
+  </Folder>
 </Solution>

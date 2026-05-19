@@ -1,6 +1,25 @@
-﻿################################################################################
-# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
-################################################################################
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
 
-/01.Web API/.vs
-/02.Web API/.vs/SwiggyRelated.slnx
+# Build output
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+
+# .NET / tooling
+TestResults/
+artifacts/
+publish/
+*.cache
+*.pdb
+
+# Editor folders
+.idea/
+.vscode/
