@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using SwiggyAPI.HttpBasics.API.Interfaces;
 using SwiggyAPI.HttpBasics.API.Models;
 
@@ -10,12 +10,31 @@ public class RestaurantsController : ControllerBase
 {
     private readonly IRestaurantService _restaurantService;
 
+    #region --- Information ---
+
+    /*
+     * | HTTP Method | Usually Used For | Data Usually Comes From | Example URL          | Body Used?   |
+       | ----------- | ---------------- | ----------------------- | -------------------- | ------------ |
+       | GET         | Read/Get data    | Route / Query String    | `/api/restaurants/5` | ❌ Usually No |
+       | POST        | Create new data  | Body                    | `/api/restaurants`   | ✅ Yes        |
+       | PUT         | Full update      | Body + Route            | `/api/restaurants/5` | ✅ Yes        |
+       | PATCH       | Partial update   | Body + Route            | `/api/restaurants/5` | ✅ Yes        |
+       | DELETE      | Delete data      | Route                   | `/api/restaurants/5` | ❌ Usually No |
+
+     */
+
+    #endregion
+
+
+    #region --- 01. Contructor Injection ---
     public RestaurantsController(IRestaurantService restaurantService)
     {
         // Dependency Injection gives the required service object automatically.
         _restaurantService = restaurantService;
     }
+    #endregion
 
+    #region --- 02. Action Methods ---
     [HttpGet]
     public ActionResult<List<Restaurant>> GetRestaurants()
     {
@@ -23,7 +42,9 @@ public class RestaurantsController : ControllerBase
         var restaurants = _restaurantService.GetAllRestaurants();
         return Ok(restaurants);
     }
+    #endregion
 
+    #region --- 03. Route Parameters ---
     [HttpGet("{restaurantId:int}")]
     public ActionResult<Restaurant> GetRestaurantById(int restaurantId)
     {
@@ -37,7 +58,9 @@ public class RestaurantsController : ControllerBase
 
         return Ok(restaurant);
     }
+    #endregion
 
+    #region --- 04. Query Parameters ---
     [HttpPost]
     public ActionResult<Restaurant> AddRestaurant(RestaurantCreateRequest request)
     {
@@ -46,7 +69,9 @@ public class RestaurantsController : ControllerBase
 
         return CreatedAtAction(nameof(GetRestaurantById), new { restaurantId = createdRestaurant.Id }, createdRestaurant);
     }
+    #endregion
 
+    #region --- 05. Request Body ---
     [HttpPut("{restaurantId:int}")]
     public ActionResult<Restaurant> UpdateRestaurant(int restaurantId, RestaurantUpdateRequest request)
     {
@@ -60,7 +85,9 @@ public class RestaurantsController : ControllerBase
 
         return Ok(updatedRestaurant);
     }
+    #endregion
 
+    #region --- 06. HTTP DELETE ---
     [HttpDelete("{restaurantId:int}")]
     public ActionResult DeleteRestaurant(int restaurantId)
     {
@@ -74,4 +101,6 @@ public class RestaurantsController : ControllerBase
 
         return Ok($"Restaurant with Id {restaurantId} deleted successfully.");
     }
+    #endregion
+
 }

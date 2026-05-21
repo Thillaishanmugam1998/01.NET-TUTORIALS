@@ -10,6 +10,7 @@ public class RestaurantsController : ControllerBase
 {
     private readonly IRestaurantService _restaurantService;
 
+
     #region --- 01. constructor injection ---
     public RestaurantsController(IRestaurantService restaurantService)
     {
@@ -27,6 +28,7 @@ public class RestaurantsController : ControllerBase
         return Ok(restaurants);
     }
     #endregion
+
 
     #region --- 03. Get restaurant by Id ---
     [HttpGet("{restaurantId:int}")]

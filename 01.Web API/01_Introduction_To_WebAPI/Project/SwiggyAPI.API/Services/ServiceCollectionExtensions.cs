@@ -12,4 +12,7 @@ public static class ServiceCollectionExtensions
 
         return services; // Return so more methods can be chained
     }
+
+  
 }
+
