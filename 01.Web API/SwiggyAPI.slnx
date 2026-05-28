@@ -25,6 +25,7 @@
   </Folder>
   <Folder Name="/07_Dependency_Injection/" />
   <Folder Name="/07_Dependency_Injection/Project/">
+    <Project Path="07_Dependency_Injection/Project/DI - Example/WebApplication1/WebApplication1.csproj" />
     <Project Path="07_Dependency_Injection/Project/SwiggyAPI.DependencyInjection.API/SwiggyAPI.DependencyInjection.API.csproj" />
   </Folder>
   <Folder Name="/08_Singleton_Scoped_Transient/" />
