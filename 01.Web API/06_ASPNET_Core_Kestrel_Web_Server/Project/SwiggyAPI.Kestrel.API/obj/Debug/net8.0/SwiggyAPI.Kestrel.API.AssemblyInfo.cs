@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SwiggyAPI.Kestrel.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ab6b11594920d5171a52ec48abccb455eee08cb7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c105912091df32be3a7b1517c6eff9252304c57a")]
 [assembly: System.Reflection.AssemblyProductAttribute("SwiggyAPI.Kestrel.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SwiggyAPI.Kestrel.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

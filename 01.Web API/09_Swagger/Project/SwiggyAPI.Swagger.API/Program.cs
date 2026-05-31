@@ -1,5 +1,15 @@
 using SwiggyAPI.Swagger.API.Services;
 
+
+/*
+ * This is a .NET 9 new feature — a built-in OpenAPI endpoint at /openapi/v1.json. 
+ * //builder.Services.AddOpenApi();
+ * It is a replacement for UseSwagger() + AddEndpointsApiExplorer() in newer projects. 
+ * app.MapOpenApi(); => It is a replacement for UseSwaggerUI() in newer projects.
+ */
+
+
+
 var builder = WebApplication.CreateBuilder(args);
 // Creates the application builder that prepares services, configuration, logging, and middleware.
 
@@ -9,6 +19,7 @@ builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
 // Helps ASP.NET Core discover API endpoint details for Swagger document generation.
+
 
 builder.Services.AddSwaggerGen();
 // Registers Swagger generator so we can create interactive API documentation.
