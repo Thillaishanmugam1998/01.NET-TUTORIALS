@@ -13,7 +13,6 @@ namespace Multiple_URLs_for_a_Single_Resource.Controllers
 
         [HttpGet("GetWeatherForecast")]
         [HttpGet("GetWheatherDeatils")]
-        
         public IEnumerable<WeatherForecast> Get()
         {
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
