@@ -1,0 +1,6 @@
+@Routing_Parameters_and_Query_String_HostAddress = http://localhost:5044
+
+GET {{Routing_Parameters_and_Query_String_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

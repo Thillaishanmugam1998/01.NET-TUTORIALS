@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/01.Routing In ASP.NET/">
+    <Project Path="Routing in ASP.NET/Routing in ASP.NET.csproj" />
+  </Folder>
+  <Folder Name="/02.Route Parameters and Query Strings/">
+    <Project Path="../../02.Route Parameters and Query String/Routing Parameters and Query String/Routing Parameters and Query String.csproj" />
+  </Folder>
+  <Folder Name="/03.Multiple URLs for a Single Resource/">
+    <Project Path="Multiple URLs for a Single Resource/Multiple URLs for a Single Resource.csproj" Id="b4aafd82-175d-4fab-a89f-8cf5db8088be" />
+  </Folder>
+</Solution>

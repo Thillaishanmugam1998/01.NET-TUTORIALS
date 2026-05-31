@@ -1,0 +1,6 @@
+@Multiple_URLs_for_a_Single_Resource_HostAddress = http://localhost:5071
+
+GET {{Multiple_URLs_for_a_Single_Resource_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
