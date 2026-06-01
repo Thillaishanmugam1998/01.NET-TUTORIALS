@@ -1,0 +1,67 @@
+@HttpStatusCodesDemo.API_HostAddress = http://localhost:5035
+
+### 200 OK - get all employees
+GET {{HttpStatusCodesDemo.API_HostAddress}}/api/employees
+Accept: application/json
+
+###
+
+### 200 OK - get employee by id
+GET {{HttpStatusCodesDemo.API_HostAddress}}/api/employees/1
+Accept: application/json
+
+###
+
+### 400 BadRequest - invalid id
+GET {{HttpStatusCodesDemo.API_HostAddress}}/api/employees/0
+Accept: application/json
+
+###
+
+### 404 NotFound - employee does not exist
+GET {{HttpStatusCodesDemo.API_HostAddress}}/api/employees/100
+Accept: application/json
+
+###
+
+### 201 Created - create a new employee
+POST {{HttpStatusCodesDemo.API_HostAddress}}/api/employees
+Content-Type: application/json
+
+{
+  "name": "Suresh",
+  "department": "Finance",
+  "salary": 55000
+}
+
+###
+
+### 400 BadRequest - invalid POST body
+POST {{HttpStatusCodesDemo.API_HostAddress}}/api/employees
+Content-Type: application/json
+
+{
+  "name": "",
+  "department": "Finance",
+  "salary": 0
+}
+
+###
+
+### 204 NoContent - delete employee
+DELETE {{HttpStatusCodesDemo.API_HostAddress}}/api/employees/2
+Accept: application/json
+
+###
+
+### 500 InternalServerError demo
+GET {{HttpStatusCodesDemo.API_HostAddress}}/api/employees/server-error-demo
+Accept: application/json
+
+###
+
+### Quick summary endpoint
+GET {{HttpStatusCodesDemo.API_HostAddress}}/api/employees/status-code-summary
+Accept: application/json
+
+###

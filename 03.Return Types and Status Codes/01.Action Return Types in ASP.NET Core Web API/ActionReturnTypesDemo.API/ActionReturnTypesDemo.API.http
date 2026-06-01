@@ -1,0 +1,49 @@
+@ActionReturnTypesDemo.API_HostAddress = http://localhost:5034
+
+### Simple value return type
+GET {{ActionReturnTypesDemo.API_HostAddress}}/api/products/count
+Accept: application/json
+
+###
+
+### Complex object return type
+GET {{ActionReturnTypesDemo.API_HostAddress}}/api/products/first-product
+Accept: application/json
+
+###
+
+### Another complex object return type
+GET {{ActionReturnTypesDemo.API_HostAddress}}/api/products/sample-customer
+Accept: application/json
+
+###
+
+### HTTP-aware response using IActionResult with Ok()
+GET {{ActionReturnTypesDemo.API_HostAddress}}/api/products/1/http-aware
+Accept: application/json
+
+###
+
+### HTTP-aware response using IActionResult with BadRequest()
+GET {{ActionReturnTypesDemo.API_HostAddress}}/api/products/0/http-aware
+Accept: application/json
+
+###
+
+### HTTP-aware response using IActionResult with NotFound()
+GET {{ActionReturnTypesDemo.API_HostAddress}}/api/products/100/http-aware
+Accept: application/json
+
+###
+
+### ActionResult<Product> example
+GET {{ActionReturnTypesDemo.API_HostAddress}}/api/products/1/action-result
+Accept: application/json
+
+###
+
+### ActionResult<IEnumerable<Product>> example
+GET {{ActionReturnTypesDemo.API_HostAddress}}/api/products/active
+Accept: application/json
+
+###

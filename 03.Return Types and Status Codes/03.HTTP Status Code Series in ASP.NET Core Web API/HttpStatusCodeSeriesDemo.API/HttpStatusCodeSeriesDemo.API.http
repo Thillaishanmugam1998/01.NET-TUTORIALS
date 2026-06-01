@@ -1,0 +1,96 @@
+@HttpStatusCodeSeriesDemo.API_HostAddress = http://localhost:5070
+
+### 1xx Informational Series
+GET {{HttpStatusCodeSeriesDemo.API_HostAddress}}/api/informational-series/100-continue
+Accept: application/json
+
+###
+
+GET {{HttpStatusCodeSeriesDemo.API_HostAddress}}/api/informational-series/101-switching-protocols
+Accept: application/json
+
+###
+
+GET {{HttpStatusCodeSeriesDemo.API_HostAddress}}/api/informational-series/102-processing
+Accept: application/json
+
+###
+
+### 2xx Successful Series
+GET {{HttpStatusCodeSeriesDemo.API_HostAddress}}/api/successful-series/200-ok
+Accept: application/json
+
+###
+
+POST {{HttpStatusCodeSeriesDemo.API_HostAddress}}/api/successful-series/201-created
+Accept: application/json
+
+###
+
+POST {{HttpStatusCodeSeriesDemo.API_HostAddress}}/api/successful-series/202-accepted
+Accept: application/json
+
+###
+
+DELETE {{HttpStatusCodeSeriesDemo.API_HostAddress}}/api/successful-series/204-no-content
+Accept: application/json
+
+###
+
+### 3xx Redirection Series
+GET {{HttpStatusCodeSeriesDemo.API_HostAddress}}/api/redirection-series/301-moved-permanently
+Accept: application/json
+
+###
+
+GET {{HttpStatusCodeSeriesDemo.API_HostAddress}}/api/redirection-series/302-found
+Accept: application/json
+
+###
+
+GET {{HttpStatusCodeSeriesDemo.API_HostAddress}}/api/redirection-series/304-not-modified
+Accept: application/json
+
+###
+
+### 4xx Client Error Series
+GET {{HttpStatusCodeSeriesDemo.API_HostAddress}}/api/client-error-series/400-bad-request
+Accept: application/json
+
+###
+
+GET {{HttpStatusCodeSeriesDemo.API_HostAddress}}/api/client-error-series/401-unauthorized
+Accept: application/json
+
+###
+
+GET {{HttpStatusCodeSeriesDemo.API_HostAddress}}/api/client-error-series/403-forbidden
+Accept: application/json
+
+###
+
+GET {{HttpStatusCodeSeriesDemo.API_HostAddress}}/api/client-error-series/404-not-found
+Accept: application/json
+
+###
+
+GET {{HttpStatusCodeSeriesDemo.API_HostAddress}}/api/client-error-series/409-conflict
+Accept: application/json
+
+###
+
+### 5xx Server Error Series
+GET {{HttpStatusCodeSeriesDemo.API_HostAddress}}/api/server-error-series/500-internal-server-error
+Accept: application/json
+
+###
+
+GET {{HttpStatusCodeSeriesDemo.API_HostAddress}}/api/server-error-series/501-not-implemented
+Accept: application/json
+
+###
+
+GET {{HttpStatusCodeSeriesDemo.API_HostAddress}}/api/server-error-series/503-service-unavailable
+Accept: application/json
+
+###
