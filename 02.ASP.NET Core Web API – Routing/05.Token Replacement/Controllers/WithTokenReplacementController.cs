@@ -36,6 +36,7 @@ namespace Token_Replacement.Controllers
         // URL:
         // GET /api/WithTokenReplacement/GetTokenInfo
         [HttpGet]
+        //[Route("[action]")]
         public string GetTokenInfo()
         {
             return "Response from controller with token replacement";
