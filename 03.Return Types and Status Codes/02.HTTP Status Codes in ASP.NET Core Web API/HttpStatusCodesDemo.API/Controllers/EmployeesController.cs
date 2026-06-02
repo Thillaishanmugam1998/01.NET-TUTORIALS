@@ -121,6 +121,7 @@ Common Codes:
 503 Service Unavailable
 504 Gateway Timeout
 
+
 Sample Method:
 
 [HttpGet("server-error")]

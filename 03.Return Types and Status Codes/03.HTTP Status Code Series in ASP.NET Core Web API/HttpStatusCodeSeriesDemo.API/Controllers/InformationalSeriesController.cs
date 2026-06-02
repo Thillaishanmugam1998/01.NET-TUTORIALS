@@ -33,7 +33,7 @@ public class InformationalSeriesController : ControllerBase
     }
 
     [HttpGet("102-processing")]
-    public IActionResult ProcessingExample()
+    public ActionResult ProcessingExample()
     {
         // 102 Processing
         // Indicates the server has received the request and is still processing it.
