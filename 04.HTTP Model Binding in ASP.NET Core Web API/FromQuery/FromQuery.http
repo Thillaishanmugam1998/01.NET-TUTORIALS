@@ -1,0 +1,6 @@
+@FromQuery_HostAddress = http://localhost:5188
+
+GET {{FromQuery_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
