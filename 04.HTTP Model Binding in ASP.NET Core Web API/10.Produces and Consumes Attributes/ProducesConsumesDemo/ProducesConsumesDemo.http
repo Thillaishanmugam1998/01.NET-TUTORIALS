@@ -1,0 +1,107 @@
+@ProducesConsumesDemo_HostAddress = https://localhost:7311
+
+### 1. [Produces] JSON action
+GET {{ProducesConsumesDemo_HostAddress}}/api/produces/json/1
+Accept: application/json
+
+###
+
+### 2. [Produces] XML action
+GET {{ProducesConsumesDemo_HostAddress}}/api/produces/xml/1
+Accept: application/xml
+
+###
+
+### 3. [Consumes] JSON only endpoint - valid JSON input
+POST {{ProducesConsumesDemo_HostAddress}}/api/consumes/json-only
+Content-Type: application/json
+Accept: application/json
+
+{
+  "Name": "Mouse",
+  "Category": "Accessories",
+  "Price": 800,
+  "InStock": true
+}
+
+###
+
+### 4. [Consumes] XML only endpoint - valid XML input
+POST {{ProducesConsumesDemo_HostAddress}}/api/consumes/xml-only
+Content-Type: application/xml
+Accept: application/xml
+
+<ProductCreateRequest>
+  <Name>Desk</Name>
+  <Category>Furniture</Category>
+  <Price>5500</Price>
+  <InStock>true</InStock>
+</ProductCreateRequest>
+
+###
+
+### 5. Controller-level JSON contract - valid JSON input
+POST {{ProducesConsumesDemo_HostAddress}}/api/contracts/products
+Content-Type: application/json
+Accept: application/json
+
+{
+  "Name": "Monitor",
+  "Category": "Electronics",
+  "Price": 12000,
+  "InStock": true
+}
+
+###
+
+### 6. Controller-level default JSON response
+GET {{ProducesConsumesDemo_HostAddress}}/api/contracts/products/1
+Accept: application/json
+
+###
+
+### 7. Action-level override - XML response
+GET {{ProducesConsumesDemo_HostAddress}}/api/contracts/products/1/xml
+Accept: application/xml
+
+###
+
+### 8. Action-level override - XML input and XML output
+POST {{ProducesConsumesDemo_HostAddress}}/api/contracts/products/xml
+Content-Type: application/xml
+Accept: application/xml
+
+<ProductCreateRequest>
+  <Name>Printer</Name>
+  <Category>Electronics</Category>
+  <Price>15000</Price>
+  <InStock>false</InStock>
+</ProductCreateRequest>
+
+###
+
+### 9. Action-level override - Multipart form-data upload
+POST {{ProducesConsumesDemo_HostAddress}}/api/contracts/upload
+Content-Type: multipart/form-data; boundary=boundary123
+Accept: application/json
+
+--boundary123
+Content-Disposition: form-data; name="file"; filename="sample.txt"
+Content-Type: text/plain
+
+Hello from upload sample
+--boundary123--
+
+###
+
+### 10. Invalid input example - sending XML to JSON-only endpoint should return 415
+POST {{ProducesConsumesDemo_HostAddress}}/api/consumes/json-only
+Content-Type: application/xml
+Accept: application/json
+
+<ProductCreateRequest>
+  <Name>Invalid Sample</Name>
+  <Category>Test</Category>
+  <Price>10</Price>
+  <InStock>true</InStock>
+</ProductCreateRequest>

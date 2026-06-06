@@ -1,0 +1,71 @@
+@BindingAttributesToModelProperties_HostAddress = https://localhost:7277
+
+### Without property-level binding attributes - Book room
+POST {{BindingAttributesToModelProperties_HostAddress}}/api/without-binding-attributes/hotels/501/book?checkIn=2025-12-01&checkOut=2025-12-05
+X-User-Token: 8a9x-12y9-abc
+Content-Type: application/json
+Accept: application/json
+
+{
+  "guestName": "John Doe",
+  "roomType": "Deluxe",
+  "guests": 2,
+  "includeBreakfast": true
+}
+
+###
+
+### Without property-level binding attributes - Modify booking
+PUT {{BindingAttributesToModelProperties_HostAddress}}/api/without-binding-attributes/hotels/501/booking/modify
+X-User-Token: 8a9x-12y9-abc
+Content-Type: application/json
+Accept: application/json
+
+{
+  "bookingId": 9001,
+  "updatedRoomType": "Suite",
+  "includeBreakfast": false
+}
+
+###
+
+### Without property-level binding attributes - Cancel booking
+DELETE {{BindingAttributesToModelProperties_HostAddress}}/api/without-binding-attributes/hotels/501/booking/cancel?bookingId=9001
+X-User-Token: 8a9x-12y9-abc
+Accept: application/json
+
+###
+
+### With property-level binding attributes - Book room
+POST {{BindingAttributesToModelProperties_HostAddress}}/api/with-binding-attributes/hotels/501/book?checkIn=2025-12-01&checkOut=2025-12-05
+X-User-Token: 8a9x-12y9-abc
+Content-Type: application/json
+Accept: application/json
+
+{
+  "guestName": "John Doe",
+  "roomType": "Deluxe",
+  "guests": 2,
+  "includeBreakfast": true
+}
+
+###
+
+### With property-level binding attributes - Modify booking
+PUT {{BindingAttributesToModelProperties_HostAddress}}/api/with-binding-attributes/hotels/501/booking/modify
+X-User-Token: 8a9x-12y9-abc
+Content-Type: application/json
+Accept: application/json
+
+{
+  "bookingId": 9001,
+  "updatedRoomType": "Suite",
+  "includeBreakfast": false
+}
+
+###
+
+### With property-level binding attributes - Cancel booking
+DELETE {{BindingAttributesToModelProperties_HostAddress}}/api/with-binding-attributes/hotels/501/booking/cancel?bookingId=9001
+X-User-Token: 8a9x-12y9-abc
+Accept: application/json

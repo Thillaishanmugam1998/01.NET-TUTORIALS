@@ -1,0 +1,68 @@
+@ContentNegotiationDemo_HostAddress = https://localhost:7299
+
+### 1. Basics - No Accept header
+GET {{ContentNegotiationDemo_HostAddress}}/api/basics/employee
+
+###
+
+### 2. Basics - JSON response
+GET {{ContentNegotiationDemo_HostAddress}}/api/basics/employee
+Accept: application/json
+
+###
+
+### 3. Basics - XML response
+GET {{ContentNegotiationDemo_HostAddress}}/api/basics/employee
+Accept: application/xml
+
+###
+
+### 4. Format selection - Multiple Accept values, XML first
+GET {{ContentNegotiationDemo_HostAddress}}/api/format-selection/employee/1
+Accept: application/xml,application/json
+
+###
+
+### 5. Format selection - Multiple Accept values, JSON first
+GET {{ContentNegotiationDemo_HostAddress}}/api/format-selection/employee/1
+Accept: application/json,application/xml
+
+###
+
+### 6. Input negotiation - Create employee with JSON body and ask JSON response
+POST {{ContentNegotiationDemo_HostAddress}}/api/input-negotiation/employees
+Content-Type: application/json
+Accept: application/json
+
+{
+  "Name": "Meena",
+  "Department": "Support",
+  "Salary": 45000,
+  "Email": "meena@demo.com"
+}
+
+###
+
+### 7. Input negotiation - Create employee with JSON body and ask XML response
+POST {{ContentNegotiationDemo_HostAddress}}/api/input-negotiation/employees
+Content-Type: application/json
+Accept: application/xml
+
+{
+  "Name": "Suresh",
+  "Department": "Operations",
+  "Salary": 51000,
+  "Email": "suresh@demo.com"
+}
+
+###
+
+### 8. Strict negotiation - Unsupported Accept header should return 406
+GET {{ContentNegotiationDemo_HostAddress}}/api/strict-negotiation/employee
+Accept: text/csv
+
+###
+
+### 9. Strict negotiation - Supported JSON request
+GET {{ContentNegotiationDemo_HostAddress}}/api/strict-negotiation/employee
+Accept: application/json
