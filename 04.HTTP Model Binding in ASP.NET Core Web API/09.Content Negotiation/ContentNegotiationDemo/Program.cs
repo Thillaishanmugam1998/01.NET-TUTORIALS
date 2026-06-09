@@ -8,6 +8,7 @@ namespace ContentNegotiationDemo
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            
             #region STEP 1 - REGISTER CONTROLLERS AND CONFIGURE CONTENT NEGOTIATION
             // This lesson project is configured to demonstrate the most useful
             // final setup from the tutorial:
